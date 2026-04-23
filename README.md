@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-   <img src="g1.png" alt="LogSense AI GUI" />
+   <img src="public/g1.png" alt="LogSense AI GUI" />
 </div>
 
 ---
