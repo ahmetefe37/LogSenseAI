@@ -1,11 +1,12 @@
-<div align="center">
-   <img width="1200" height="475" alt="LogSense Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-
    # LogSense AI
 
    **AI-powered log and error analysis tool**
 
    Merges pasted log blocks, analyzes them via OpenRouter, and generates both detailed solutions and quick summaries.
+</div>
+
+<div align="center">
+   <img src="g1.png" alt="LogSense AI GUI" />
 </div>
 
 ---
@@ -93,23 +94,53 @@ The application:
 npm install
 ```
 
-### 2) Configure environment variables
-
-Create a `.env.local` file at the project root:
-
-```bash
-OPENROUTER_API_KEY=sk-or-v1-...
-```
-
-> Note: The API key can also be entered from the **Settings** panel in the UI. The submitted key overrides `process.env.OPENROUTER_API_KEY` on the backend.
-
-### 3) Start the development server
+### 2) Start the development server
 
 ```bash
 npm run dev
 ```
 
 Default app URL: `http://localhost:3000`
+
+### 3) Enter API key and model in the app
+
+After opening the app:
+
+1. Click the **Settings** icon (top-right).
+2. Enter your **OpenRouter API Key**.
+3. Enter the **model name** you want to use (e.g. `x-ai/grok-4.1-fast`).
+4. Click **Save Settings**.
+
+> No `.env` file is required for this workflow.
+
+### 4) Configure **Instruction Context** (Highly Recommended)
+
+In the same **Settings** panel, paste a configuration text into the **Instruction Context** field.
+
+**Recommended configuration text:**
+
+```text
+You are a senior full-stack debugging and systems engineer focused on rapid, accurate production issue resolution.
+
+Your role:
+Analyze logs, stack traces, runtime errors, build failures, infrastructure issues, database problems, deployment regressions, and performance bottlenecks. Prioritize root-cause analysis over generic advice.
+
+Response format:
+- Diagnosis
+- Evidence
+- Most Likely Root Cause
+- Fix Options (Recommended + Alternatives)
+- Verification
+- Prevention
+```
+
+> ⚠️ **Why this matters:** The quality and consistency of analysis heavily depends on this configuration text. A strong Instruction Context gives you more precise root-cause analysis, more actionable fixes, and less generic AI output.
+
+> ℹ️ This content is saved via the settings API and persisted in `profile/configuration.txt`.
+
+<div align="center">
+   <img src="public/g2.png" alt="Settings panel with API key and model input" />
+</div>
 
 ---
 
@@ -121,17 +152,6 @@ npm run build   # production build
 npm run start   # production server
 npm run lint    # eslint check
 ```
-
----
-
-## 🔐 Environment Variables
-
-| Variable | Required | Description |
-|---|---:|---|
-| `OPENROUTER_API_KEY` | Yes* | OpenRouter API key. |
-| `DISABLE_HMR` | No | If `true`, disables webpack watch in dev mode (for special scenarios). |
-
-\* The API key can also be provided via the Settings panel instead of env.
 
 ---
 
