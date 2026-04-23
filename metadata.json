@@ -1,0 +1,6 @@
+{
+  "name": "AI Log & Error Analyzer",
+  "description": "A dark-themed, minimalist SaaS tool for analyzing logs and error outputs using AI via OpenRouter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
